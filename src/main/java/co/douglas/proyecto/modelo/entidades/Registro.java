@@ -1,13 +1,6 @@
 package co.douglas.proyecto.modelo.entidades;
 
-import co.douglas.proyecto.modelo.enumeraciones.TipoProducto;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,34 +13,33 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Producto implements Serializable {
+public class Registro implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idProducto;
+    @Column(name = "id", nullable = false)
+    private int id;
 
-    @Column(nullable = false, length = 100, unique = true)
+    @Column(nullable = false, length = 100)
     private String codigo;
 
-    @Column(nullable = false)
-    private float cantidadStock;
+    @Column(nullable = false) // 12 dígitos en total, 2 después de la coma
+    private double cantidadStock;
 
-    @Column(nullable = false)
-    private float precio;
+    @Column(nullable = false) // 12 dígitos en total, 2 después de la coma
+    private double precio;
 
-    @Column(length = 100)
+    @Column(length = 100, nullable = false)
     private String fechaIngreso;
-
-    @Column(nullable = true)
-    private Integer idProductoStock;
-
-    @Column(nullable = true)
-    private Integer idProveedor;
 
     @Column(nullable = false)
     private int estado;
 
-    @Enumerated(EnumType.STRING) // Guarda el nombre del enum como string en la base de datos
-    @Column(nullable = false)
-    private TipoProducto tipoProducto;
+    @ManyToOne
+    @JoinColumn(name = "idProducto", nullable = false)
+    private Producto producto;
+
+    @ManyToOne
+    @JoinColumn(name = "idProveedor", nullable = false)
+    private Proveedor proveedor;
 }
