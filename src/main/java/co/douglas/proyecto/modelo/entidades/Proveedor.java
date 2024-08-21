@@ -42,6 +42,6 @@ public class Proveedor implements Serializable {
     private Integer estado;
 
     @OneToMany(mappedBy = "proveedor")
-    private List<Registro> registros;
+    private List<Compra> compras;
 }
 

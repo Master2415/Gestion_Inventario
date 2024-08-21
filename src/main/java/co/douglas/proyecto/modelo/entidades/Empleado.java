@@ -49,4 +49,12 @@ public class Empleado implements Serializable {
     @Column(nullable = false) // No puede ser null
     private int estado;
 
+    @OneToMany(mappedBy = "empleado")
+    private List<Usuario> usuarios;
+
+    @ManyToOne
+    @JoinColumn(name = "idRol", nullable = false)
+    private Rol rol;
+
+
 }

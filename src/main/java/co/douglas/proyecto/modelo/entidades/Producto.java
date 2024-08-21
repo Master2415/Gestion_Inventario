@@ -15,12 +15,12 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Producto implements Serializable {
+public class    Producto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int id;
+    private int idProducto;
 
     @Column(nullable = false, length = 100, unique = true)
     private String codigo;
@@ -44,12 +44,19 @@ public class Producto implements Serializable {
     @Column(nullable = false) // 12 dígitos en total, 2 después de la coma
     private double stock;
 
-    @Column(name = "precio_neto") // 12 dígitos en total, 2 después de la coma
+    @Column(name = "precio_neto"    ) // 12 dígitos en total, 2 después de la coma
     private double precioNeto;
 
     @Column(nullable = false)
     private int estado;
 
     @OneToMany(mappedBy = "producto")
-    private List<Registro> registros;
+    private List<Compra> compras;
+
+    @OneToMany(mappedBy = "producto")
+    private List<DetalleVenta> detalleVentas;
+
+    @OneToMany(mappedBy = "producto")
+    private List<DetalleCompra> detalleCompras;
+
 }
