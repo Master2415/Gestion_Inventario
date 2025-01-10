@@ -12,11 +12,15 @@ import co.douglas.proyecto.repositorios.ProductoRepo;
 import co.douglas.proyecto.repositorios.ProveedorRepo;
 import co.douglas.proyecto.repositorios.UsuarioRepo;
 import co.douglas.proyecto.servicios.interfaces.CompraServicio;
+import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@Transactional
 public class CompraServicioImpl implements CompraServicio {
 
     private final CompraRepo compraRepositorio;

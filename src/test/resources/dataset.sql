@@ -14,6 +14,23 @@ VALUES
     ('proveedor4@correo.com', 'Calle 101', 1, 'Proveedor Mixto', 'Mixto'),
     ('proveedor5@correo.com', 'Calle 202', 1, 'Proveedor Costillas', 'Carnes');
 
+INSERT INTO rol (nombre_rol, salario)
+VALUES
+    ('Gerente', 5000000),
+    ('Supervisor', 3500000),
+    ('Vendedor', 2000000),
+    ('Cajero', 1800000),
+    ('Auxiliar de Inventario', 1500000);
+
+INSERT INTO empleado (apellido, cedula, direccion, email, estado, fecha_contratacion, horas_trabajadas, nombre, id_rol)
+VALUES
+    ('Gómez', '1020304050', 'Calle 123 #45-67', 'gomez@empresa.com', 1, '2023-01-15 08:30:00', 160, 'Carlos', 1),
+    ('Pérez', '1020304051', 'Carrera 10 #20-30', 'perez@empresa.com', 1, '2023-02-01 09:00:00', 150, 'Andrea', 2),
+    ('Rodríguez', '1020304052', 'Avenida 5 #10-15', 'rodriguez@empresa.com', 1, '2023-03-10 08:00:00', 140, 'Luis', 3),
+    ('Martínez', '1020304053', 'Calle 50 #12-34', 'martinez@empresa.com', 1, '2023-04-20 07:45:00', 160, 'Ana', 4),
+    ('Lopez', '1020304054', 'Carrera 15 #25-50', 'lopez@empresa.com', 1, '2023-05-05 08:15:00', 120, 'Diana', 5);
+
+
 INSERT INTO usuario (contrasena, correo, estado, id_empleado)
 VALUES
     ('password1', 'usuario1@correo.com', 1, 1),
@@ -24,8 +41,8 @@ VALUES
 
 INSERT INTO compra (cantidad_stock, estado, fecha_ingreso, precio, id_producto, id_proveedor, id_usuario)
 VALUES
-    (10.0, 1, '2024-08-01', 100000, 1, 1, 1),
-    (20.0, 1, '2024-08-02', 160000, 2, 2, 2),
-    (15.0, 1, '2024-08-03', 135000, 3, 3, 3),
-    (8.0, 1, '2024-08-04', 96000, 4, 4, 4),
-    (12.0, 1, '2024-08-05', 84000, 5, 5, 5);
+    (10.0, 1, '2024-08-01', 100000, 1, 1, 11),
+    (20.0, 1, '2024-08-02', 160000, 2, 2, 12),
+    (15.0, 1, '2024-08-03', 135000, 3, 3, 13),
+    (8.0, 1, '2024-08-04', 96000, 4, 4, 14),
+    (12.0, 1, '2024-08-05', 84000, 5, 5, 15);
