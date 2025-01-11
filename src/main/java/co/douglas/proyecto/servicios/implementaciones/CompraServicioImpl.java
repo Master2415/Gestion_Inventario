@@ -39,26 +39,26 @@ public class CompraServicioImpl implements CompraServicio {
     }
 
     @Override
-    public DetalleCompraDTO guardarCompra(GuardarCompraDTO compraDTO) throws Exception {
+    public DetalleCompraDTO guardarCompra(GuardarCompraDTO detalleCompraDTO) throws Exception {
         Compra nuevaCompra = new Compra();
 
         // Asignar los valores desde el DTO a la entidad
-        nuevaCompra.setCantidadStock(compraDTO.cantidadStock());
-        nuevaCompra.setPrecio(compraDTO.precio());
-        nuevaCompra.setFecha_Ingreso(compraDTO.fechaIngreso());
-        nuevaCompra.setEstado(compraDTO.estado());
+        nuevaCompra.setCantidadStock(detalleCompraDTO.cantidadStock());
+        nuevaCompra.setPrecio(detalleCompraDTO.precio());
+        nuevaCompra.setFecha_Ingreso(detalleCompraDTO.fechaIngreso());
+        nuevaCompra.setEstado(detalleCompraDTO.estado());
 
         // Buscar y asignar entidades relacionadas
-        Producto producto = productoRepositorio.findById(compraDTO.idProducto())
-                .orElseThrow(() -> new Exception("Producto no encontrado con ID: " + compraDTO.idProducto()));
+        Producto producto = productoRepositorio.findById(detalleCompraDTO.idProducto())
+                .orElseThrow(() -> new Exception("Producto no encontrado con ID: " + detalleCompraDTO.idProducto()));
         nuevaCompra.setProducto(producto);
 
-        Proveedor proveedor = proveedorRepositorio.findById(compraDTO.idProveedor())
-                .orElseThrow(() -> new Exception("Proveedor no encontrado con ID: " + compraDTO.idProveedor()));
+        Proveedor proveedor = proveedorRepositorio.findById(detalleCompraDTO.idProveedor())
+                .orElseThrow(() -> new Exception("Proveedor no encontrado con ID: " + detalleCompraDTO.idProveedor()));
         nuevaCompra.setProveedor(proveedor);
 
-        Usuario usuario = usuarioRepositorio.findById(compraDTO.idUsuario())
-                .orElseThrow(() -> new Exception("Usuario no encontrado con ID: " + compraDTO.idUsuario()));
+        Usuario usuario = usuarioRepositorio.findById(detalleCompraDTO.idUsuario())
+                .orElseThrow(() -> new Exception("Usuario no encontrado con ID: " + detalleCompraDTO.idUsuario()));
         nuevaCompra.setUsuario(usuario);
 
         Compra compraGuardada = compraRepositorio.save(nuevaCompra);
@@ -76,7 +76,7 @@ public class CompraServicioImpl implements CompraServicio {
     }
 
     @Override
-    public DetalleCompraDTO modificarCompra(int idCompra, GuardarCompraDTO compraDTO) throws Exception {
+    public DetalleCompraDTO modificarCompra(int idCompra, DetalleCompraDTO detalleCompraDTO) throws Exception {
         Optional<Compra> compraExistente = compraRepositorio.findById(idCompra);
         if (compraExistente.isEmpty()) {
             throw new Exception("No existe una compra con el ID " + idCompra);
@@ -85,22 +85,22 @@ public class CompraServicioImpl implements CompraServicio {
         Compra compra = compraExistente.get();
 
         // Actualizar los valores desde el DTO
-        compra.setCantidadStock(compraDTO.cantidadStock());
-        compra.setPrecio(compraDTO.precio());
-        compra.setFecha_Ingreso(compraDTO.fechaIngreso());
-        compra.setEstado(compraDTO.estado());
+        compra.setCantidadStock(detalleCompraDTO.cantidadStock());
+        compra.setPrecio(detalleCompraDTO.precio());
+        compra.setFecha_Ingreso(detalleCompraDTO.fechaIngreso());
+        compra.setEstado(detalleCompraDTO.estado());
 
         // Buscar y asignar entidades relacionadas
-        Producto producto = productoRepositorio.findById(compraDTO.idProducto())
-                .orElseThrow(() -> new Exception("Producto no encontrado con ID: " + compraDTO.idProducto()));
+        Producto producto = productoRepositorio.findById(detalleCompraDTO.idProducto())
+                .orElseThrow(() -> new Exception("Producto no encontrado con ID: " + detalleCompraDTO.idProducto()));
         compra.setProducto(producto);
 
-        Proveedor proveedor = proveedorRepositorio.findById(compraDTO.idProveedor())
-                .orElseThrow(() -> new Exception("Proveedor no encontrado con ID: " + compraDTO.idProveedor()));
+        Proveedor proveedor = proveedorRepositorio.findById(detalleCompraDTO.idProveedor())
+                .orElseThrow(() -> new Exception("Proveedor no encontrado con ID: " + detalleCompraDTO.idProveedor()));
         compra.setProveedor(proveedor);
 
-        Usuario usuario = usuarioRepositorio.findById(compraDTO.idUsuario())
-                .orElseThrow(() -> new Exception("Usuario no encontrado con ID: " + compraDTO.idUsuario()));
+        Usuario usuario = usuarioRepositorio.findById(detalleCompraDTO.idUsuario())
+                .orElseThrow(() -> new Exception("Usuario no encontrado con ID: " + detalleCompraDTO.idUsuario()));
         compra.setUsuario(usuario);
 
         Compra compraActualizada = compraRepositorio.save(compra);
