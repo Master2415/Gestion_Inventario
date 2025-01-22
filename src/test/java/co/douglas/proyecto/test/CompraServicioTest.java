@@ -42,7 +42,7 @@ public class CompraServicioTest {
     @Sql("classpath:dataset.sql")
     public void actualizarCompraTest() throws Exception {
         // Obtenemos la compra para la modificación
-        DetalleCompraDTO compraGuardada = compraServicio.detalleCompra(29);
+        DetalleCompraDTO compraGuardada = compraServicio.detalleCompra(8);
 
         // Validamos que la compra exista
         Assertions.assertNotNull(compraGuardada, "La compra no existe en la base de datos");
@@ -64,7 +64,7 @@ public class CompraServicioTest {
         );
 
         // Invocamos el método de modificación
-        compraServicio.modificarCompra(29, change);
+        compraServicio.modificarCompra(8, change);
 
         // Obtenemos nuevamente la compra para verificar los cambios
         DetalleCompraDTO compraActualizada = compraServicio.detalleCompra(29);

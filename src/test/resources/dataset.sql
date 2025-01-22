@@ -1,3 +1,5 @@
+SET NAMES 'utf8mb4';
+
 INSERT INTO producto (codigo, estado, iva, nombre, precio_neto, precio_total, stock, tipo_producto, utilidad)
 VALUES
     ('CAR123-0', 0, 19.0, 'Bife de Res', 12000, 14280, 100, 'Res', 22),
@@ -17,17 +19,17 @@ VALUES
 INSERT INTO rol (nombre_rol, salario)
 VALUES
     ('Director de Ventas', 6000000),
-    ('Supervisor de Producción', 4000000),
+    ('Supervisor de Produccion', 4000000),
     ('Asesor Comercial', 2500000),
     ('Cajero Principal', 2000000),
-    ('Almacén y Logística', 1700000);
+    ('Almacen y Logistica', 1700000);
 
 INSERT INTO empleado (apellido, cedula, direccion, email, estado, fecha_contratacion, horas_trabajadas, nombre, id_rol)
 VALUES
-    ('Gómez', '1012345678', 'Calle 70 #23-45', 'carlos.gomez@empresa.com', 1, '2023-01-10 09:00:00', 160, 'Carlos', 1),
-    ('Pérez', '1022345679', 'Calle 85 #10-30', 'andrea.perez@empresa.com', 1, '2023-02-01 08:30:00', 150, 'Andrea', 2),
-    ('Rodríguez', '1032345680', 'Avenida 5 #15-25', 'luis.rodriguez@empresa.com', 1, '2023-03-05 08:00:00', 140, 'Luis', 3),
-    ('Martínez', '1042345681', 'Calle 20 #30-50', 'ana.martinez@empresa.com', 1, '2023-04-15 07:45:00', 160, 'Ana', 4),
+    ('Gomez', '1012341278', 'Calle 70 #23-45', 'carlos.gomez@empresa.com', 1, '2023-01-10 09:00:00', 160, 'Carlos', 1),
+    ('Perez', '1022345679', 'Calle 85 #10-30', 'andrea.perez@empresa.com', 1, '2023-02-01 08:30:00', 150, 'Andrea', 2),
+    ('Rodriguez', '1032345680', 'Avenida 5 #15-25', 'luis.rodriguez@empresa.com', 1, '2023-03-05 08:00:00', 140, 'Luis', 3),
+    ('Martinez', '1042345681', 'Calle 20 #30-50', 'ana.martinez@empresa.com', 1, '2023-04-15 07:45:00', 160, 'Ana', 4),
     ('Lopez', '1052345682', 'Carrera 30 #40-60', 'diana.lopez@empresa.com', 1, '2023-05-10 08:15:00', 120, 'Diana', 5);
 
 INSERT INTO usuario (contrasena, correo, estado, id_empleado)

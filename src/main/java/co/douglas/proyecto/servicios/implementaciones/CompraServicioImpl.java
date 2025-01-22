@@ -76,7 +76,7 @@ public class CompraServicioImpl implements CompraServicio {
     }
 
     @Override
-    public DetalleCompraDTO modificarCompra(int idCompra, DetalleCompraDTO detalleCompraDTO) throws Exception {
+    public void modificarCompra(int idCompra, DetalleCompraDTO detalleCompraDTO) throws Exception {
         Optional<Compra> compraExistente = compraRepositorio.findById(idCompra);
         if (compraExistente.isEmpty()) {
             throw new Exception("No existe una compra con el ID " + idCompra);
@@ -105,7 +105,7 @@ public class CompraServicioImpl implements CompraServicio {
 
         Compra compraActualizada = compraRepositorio.save(compra);
 
-        return new DetalleCompraDTO(
+        new DetalleCompraDTO(
                 compraActualizada.getIdCompra(),
                 compraActualizada.getCantidadStock(),
                 compraActualizada.getPrecio(),

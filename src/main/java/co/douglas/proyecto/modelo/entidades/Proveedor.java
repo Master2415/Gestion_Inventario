@@ -18,7 +18,7 @@ public class Proveedor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idProveedor", nullable = false)
+    @Column(name = "id_Proveedor", nullable = false)
     private int idProveedor;
 
     @Column(nullable = false, length = 100)

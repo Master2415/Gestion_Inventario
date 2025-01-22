@@ -9,10 +9,10 @@ import java.util.List;
 public interface CompraServicio {
 
     // Método para registrar una nueva compra
-    DetalleCompraDTO guardarCompra(GuardarCompraDTO detalleCompraDTO) throws Exception;
+    DetalleCompraDTO guardarCompra(GuardarCompraDTO guardarCompraDTO) throws Exception;
 
     // Método para modificar una compra existente
-    DetalleCompraDTO modificarCompra(int idCompra, DetalleCompraDTO detalleCompraDTO) throws Exception;
+    void modificarCompra(int idCompra, DetalleCompraDTO detalleCompraDTO) throws Exception;
 
     // Método para eliminar una compra
     void eliminarCompra(int idCompra) throws Exception;

@@ -18,7 +18,7 @@ public class Venta implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idVenta", nullable = false)
+    @Column(name = "id_Venta", nullable = false)
     private int idVenta;
 
     @Column(nullable = false)
@@ -28,11 +28,11 @@ public class Venta implements Serializable {
     private String fecha;
 
     @ManyToOne
-    @JoinColumn(name = "idUsuario", nullable = false)
+    @JoinColumn(name = "id_Usuario", nullable = false)
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "idCliente", nullable = false)
+    @JoinColumn(name = "id_Cliente", nullable = false)
     private Cliente cliente;
 
     @OneToMany(mappedBy = "venta")

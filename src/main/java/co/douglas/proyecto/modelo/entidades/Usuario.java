@@ -18,7 +18,7 @@ public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idUsuario", nullable = false)
+    @Column(name = "id_Usuario", nullable = false)
     private int idUsuario;
 
     @Column(nullable = false, length = 100, unique = true)
@@ -31,7 +31,7 @@ public class Usuario implements Serializable {
     private int estado;
 
     @ManyToOne
-    @JoinColumn(name = "idEmpleado", nullable = false)
+    @JoinColumn(name = "id_Empleado", nullable = false)
     private Empleado empleado;
 
     @OneToMany(mappedBy = "usuario")

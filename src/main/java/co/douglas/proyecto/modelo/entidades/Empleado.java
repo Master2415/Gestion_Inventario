@@ -53,7 +53,7 @@ public class Empleado implements Serializable {
     private List<Usuario> usuarios;
 
     @ManyToOne
-    @JoinColumn(name = "idRol", nullable = false)
+    @JoinColumn(name = "id_Rol", nullable = false)
     private Rol rol;
 
 

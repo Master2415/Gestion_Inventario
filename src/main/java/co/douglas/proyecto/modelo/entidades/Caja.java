@@ -17,7 +17,7 @@ public class Caja implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCaja", nullable = false)
+    @Column(name = "id_Caja", nullable = false)
     private int idCaja;
 
     @Column(nullable = false, length = 100)
@@ -36,6 +36,6 @@ public class Caja implements Serializable {
     private int estado;
 
     @ManyToOne
-    @JoinColumn(name = "idUser", nullable = false)
+    @JoinColumn(name = "id_User", nullable = false)
     private Usuario usuario;
 }

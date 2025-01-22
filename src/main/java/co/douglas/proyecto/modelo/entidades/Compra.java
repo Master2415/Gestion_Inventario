@@ -39,15 +39,15 @@ public class Compra implements Serializable {
     private List<DetalleCompra> detalleCompras;
 
     @ManyToOne
-    @JoinColumn(name = "idProducto", nullable = false)
+    @JoinColumn(name = "id_Producto", nullable = false)
     private Producto producto;
 
     @ManyToOne
-    @JoinColumn(name = "idProveedor", nullable = false)
+    @JoinColumn(name = "id_Proveedor", nullable = false)
     private Proveedor proveedor;
 
     @ManyToOne
-    @JoinColumn(name = "idUsuario", nullable = false)
+    @JoinColumn(name = "id_Usuario", nullable = false)
     private Usuario usuario;
 
 }

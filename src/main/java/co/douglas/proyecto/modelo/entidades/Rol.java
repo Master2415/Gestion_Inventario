@@ -18,10 +18,10 @@ public class Rol implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idRol", nullable = false)
+    @Column(name = "id_Rol", nullable = false)
     private int idRol;
 
-    @Column(name = "nombreRol", nullable = false, length = 45)
+    @Column(name = "nombre_Rol", nullable = false, length = 45)
     private String nombreRol;
 
     @Column(nullable = false)
