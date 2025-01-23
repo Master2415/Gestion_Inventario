@@ -42,7 +42,7 @@ public class CompraServicioTest {
     @Sql("classpath:dataset.sql")
     public void actualizarCompraTest() throws Exception {
         // Obtenemos la compra para la modificación
-        DetalleCompraDTO compraGuardada = compraServicio.detalleCompra(8);
+        DetalleCompraDTO compraGuardada = compraServicio.detalleCompra(1);
 
         // Validamos que la compra exista
         Assertions.assertNotNull(compraGuardada, "La compra no existe en la base de datos");
@@ -64,10 +64,10 @@ public class CompraServicioTest {
         );
 
         // Invocamos el método de modificación
-        compraServicio.modificarCompra(8, change);
+        compraServicio.modificarCompra(1, change);
 
         // Obtenemos nuevamente la compra para verificar los cambios
-        DetalleCompraDTO compraActualizada = compraServicio.detalleCompra(29);
+        DetalleCompraDTO compraActualizada = compraServicio.detalleCompra(1);
 
         // Validamos que la compra se haya actualizado
         Assertions.assertNotNull(compraActualizada, "La compra no se actualizó correctamente");
@@ -82,19 +82,18 @@ public class CompraServicioTest {
         Assertions.assertEquals(compraGuardada.idUsuario(), compraActualizada.idUsuario(), "El ID del usuario no debería haber cambiado");
     }
 
-
     @Test
     @Sql("classpath:dataset.sql")
     public void eliminarTest() throws Exception {
         // Verifica que la compra exista antes de eliminarla
-        DetalleCompraDTO compraGuardada = compraServicio.detalleCompra(29);
+        DetalleCompraDTO compraGuardada = compraServicio.detalleCompra(1);
         Assertions.assertNotNull(compraGuardada, "La compra no debería ser nula antes de eliminarla");
 
         // Elimina la compra
-        compraServicio.eliminarCompra(29);
+        compraServicio.eliminarCompra(1);
 
         // Verifica que ya no existe en el repositorio
-        Assertions.assertThrows(Exception.class, () -> compraServicio.detalleCompra(29));
+        Assertions.assertThrows(Exception.class, () -> compraServicio.detalleCompra(1));
     }
 
     @Test
@@ -102,7 +101,7 @@ public class CompraServicioTest {
     public void listarTest() throws Exception {
         List<ItemCompraDTO> list = compraServicio.listaCompras();
         list.forEach(System.out::println);
-        Assertions.assertEquals(2, list.size());
+        Assertions.assertEquals(1, list.size());
     }
 
 

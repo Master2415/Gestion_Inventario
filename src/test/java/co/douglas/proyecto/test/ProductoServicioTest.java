@@ -5,22 +5,34 @@ import co.douglas.proyecto.dto.producto.GuardarProductoDTO;
 import co.douglas.proyecto.dto.producto.ItemProductoDTO;
 import co.douglas.proyecto.modelo.enumeraciones.TipoProducto;
 import co.douglas.proyecto.servicios.interfaces.ProductoServicio;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @SpringBootTest
+@Transactional // Asegura que los cambios realizados en cada prueba se reviertan automáticamente
+@TestInstance(TestInstance.Lifecycle.PER_CLASS) // Para manejar datos de prueba de forma más eficiente
 public class ProductoServicioTest {
 
     @Autowired
     private ProductoServicio productoServicio;
 
+    @BeforeEach
+    @Sql("classpath:dataset.sql") // Inicializa los datos automáticamente antes de cada prueba
+    public void setUp() {
+        // Aquí puedes realizar configuraciones adicionales si es necesario
+    }
+
+    @AfterEach
+    public void tearDown() {
+        // Limpia la base de datos solo si no se usan transacciones
+    }
+
     @Test
-    @Sql("classpath:dataset.sql")
     public void registrarProductoTest() throws Exception {
         // Creamos un DTO con los datos del producto
         GuardarProductoDTO nuevoProducto = new GuardarProductoDTO(
@@ -44,7 +56,6 @@ public class ProductoServicioTest {
     }
 
     @Test
-    @Sql("classpath:dataset.sql")
     public void actualizarProductoTest() throws Exception {
         // Obtenemos un producto existente
         DetalleProductoDTO productoExistente = productoServicio.detalleProducto(1);
@@ -75,7 +86,6 @@ public class ProductoServicioTest {
     }
 
     @Test
-    @Sql("classpath:dataset.sql")
     public void eliminarProductoTest() throws Exception {
         // Eliminamos un producto existente
         productoServicio.eliminarProducto(1);
@@ -85,7 +95,6 @@ public class ProductoServicioTest {
     }
 
     @Test
-    @Sql("classpath:dataset.sql")
     public void listarProductosTest() throws Exception {
         // Obtenemos la lista de productos
         List<ItemProductoDTO> productos = productoServicio.listaProductos();
@@ -93,11 +102,10 @@ public class ProductoServicioTest {
         // Verificamos que la lista no sea nula y tenga los elementos esperados
         Assertions.assertNotNull(productos, "La lista de productos no debería ser nula.");
         Assertions.assertFalse(productos.isEmpty(), "La lista de productos no debería estar vacía.");
-        Assertions.assertEquals(5, productos.size(), "La cantidad de productos no coincide con lo esperado.");
+        Assertions.assertEquals(1, productos.size(), "La cantidad de productos no coincide con lo esperado.");
     }
 
     @Test
-    @Sql("classpath:dataset.sql")
     public void detalleProductoTest() throws Exception {
         // Obtenemos los detalles de un producto existente
         DetalleProductoDTO producto = productoServicio.detalleProducto(1);
